@@ -1,0 +1,38 @@
+#11 compare human_mtDNA vs mouse_mtDNA
+# download full length human_and_mouse mtDNA
+
+# create human_mtDNA_f 
+writeLines(readLines("human_mtDNA.txt"), "human_mtDNA.fasta")
+human_mtDNA_f <- readLines("human_mtDNA.fasta")
+human_mtDNA_f
+head(human_mtDNA_f)
+tail(human_mtDNA_f)
+str(human_mtDNA_f)
+# create mouse_mtDNA_f 
+writeLines(readLines("mouse_mtDNA.txt"), "mouse_mtDNA.fasta")
+mouse_mtDNA_f <- readLines("mouse_mtDNA.fasta")
+mouse_mtDNA_f
+head(mouse_mtDNA_f)
+tail(mouse_mtDNA_f)
+str(mouse_mtDNA_f)
+
+#Here_is a version_of the code_to generate a pairwise sequence alignment 
+# using the pairwiseAlignment_function from the Biostrings package:
+# Install the Bioconductor 'Biostrings' package_if_not already installed
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+  install.packages("BiocManager")
+}
+BiocManager::install("Biostrings")
+# Load necessary libraries
+library(Biostrings)
+# pause_to_type_all
+
+human_mtDNA_seq <- readDNAStringSet("human_mtDNA.fasta")
+human_mtDNA_seq
+mouse_mtDNA_seq <- readDNAStringSet("mouse_mtDNA.fasta")
+mouse_mtDNA_seq
+
+# Perform pairwise alignment between sequences
+human_mouse_mtDNA_pairwise_alignment <- pairwiseAlignment(human_seq, mouse_seq)
+human_mouse_mtDNA_pairwise_alignment
+print(human_mouse_mtDNA_pairwise_alignment)
