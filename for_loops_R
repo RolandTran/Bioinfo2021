@@ -1,0 +1,361 @@
+# for loop PS
+
+# set wdls
+setwd("D:/Coding_Exercises/R/BioInformatics for plant and animal sciences with R/HW/HW_files/02/loops")
+getwd()
+wrkdir <- getwd()
+wrkdir
+list.files()
+
+#1
+# Prompt the user to enter a number
+x <- readline("Enter a number: ")
+# Convert the input to numeric if it's a valid number
+number <- suppressWarnings(as.numeric(x))
+# Check if the number is a valid numeric value
+if (!is.na(number)) {
+  if (number %% 2 == 0) {
+    cat("Enter a number: ",x, "\n\n" )
+    print(paste(number, "is an even number."))
+  } else {
+    cat("Enter a number: ",x,"\n\n" )
+    print(paste(number, "is an odd number."))
+  }
+} else {
+  cat("Enter a number: ",x, "\n\n" )
+  print("Invalid input. Please enter a valid number.")
+}
+
+#2
+# Taking user input for the range
+a <- as.integer(readline("Enter a number: "))
+# Using a for loop to print numbers from 1 to the user-input number
+cat("Taking user input for the range.\n")
+cat("Enter a number: ", a, "\n\n")
+for (i in 0:a) {
+  print(i)
+}
+
+#2a
+# Taking user input for the range
+w <- as.integer(readline("Enter a number: "))
+total <- 0
+# Using a for loop to print numbers from 1 to the user-input number
+cat("Taking user input for the range.\n")
+cat("Enter a number: ", w, "\n\n")
+for (i in 0:w) {
+  cat(i, "\n")
+  total <- total + i
+}
+cat("Sum:", total, "\n")
+
+#3
+# Taking user input for the range
+b <- as.integer(readline("Enter a number: "))
+# Using a for loop to print numbers from 1 to the user-input number
+cat("Taking user input for the range in reverse.\n")
+cat("Enter a number: ", b, "\n\n")
+for (i in b:0) {
+  print(i)
+}
+
+#3a
+# Taking user input for the range
+e <- as.integer(readline("Enter a number: "))
+# Using a for loop to print numbers from 1 to the user-input number
+cat("Taking user input for the range in reverse.\n")
+cat("Enter a number: ", e, "\n\n")
+for (i in e:0) {
+  cat(i, "\n")
+  total <- total + i
+}
+cat("Sum:", total, "\n")
+
+#4
+# Taking user input for the range of even numbers
+c <- as.integer(readline("Enter a multiple of 2: "))
+cat("Taking user input for the range of even numbers\n")
+cat("Enter an even number: ", c, "\n\n")
+# Using a for loop to print even numbers from 0 to the user-input number
+for (i in seq(0, c, by = 2)) {
+  print(i)
+}
+
+#4a
+# Taking user input for the range of even numbers
+t <- as.integer(readline("Enter an even number: "))
+cat("Multiples of 2 up to", t, "are:\n")
+total <- 0
+# Using a for loop to print numbers from 0 to the user-input number in steps of 2
+for (i in seq(0, t, by = 2)) {
+  cat(i, "\n")
+  total <- total + i
+}
+cat("Sum:", total, "\n")
+
+#5
+# Taking user input for the range of even numbers
+d <- as.integer(readline("Enter a multiple of 2: "))
+cat("Taking user input for the range of even numbers in reverse from",d, "\n")
+cat("Enter an even number: ", d, "\n\n")
+total <- 0
+# Using a for loop to print even numbers from 0 to the user-input number
+for (i in seq(d, 0, by = -2)) {
+  cat(i, "\n")
+  total <- total + i
+}
+cat("Sum:", total, "\n")
+
+#6
+# Taking user input for the range of odd numbers
+k <- as.integer(readline("Enter an even number: "))
+cat("Odds up to", k, "are:\n")
+total <- 0
+# Using a for loop to print numbers from 1 to the user-input number in steps of 2
+for (i in seq(1, k, by = 2)) {
+  cat(i, "\n")
+  total <- total + i
+}
+cat("Sum:", total, "\n")
+
+#6a
+# Taking user input for the range of odd numbers
+k <- as.integer(readline("Enter an even number: "))
+cat("Odds from", k, "down to 1 are the following:\n")
+total <- 0
+# Using a for loop to print numbers from 1 to the user-input number in steps of 2
+for (i in seq(k, 1, by = -2)) {
+  cat(i, "\n")
+  total <- total + i
+}
+cat("Sum:", total, "\n")
+
+#7
+# Taking user input for the range of odd numbers
+start_odd <- as.integer(readline("Enter a start odd number: "))
+end_odd <- as.integer(readline("Enter an end odd number: "))
+cat("Odd numbers from", start_odd, "to", end_odd, "are the following:\n")
+total <- 0
+# Using a for loop to print numbers from 1 to the user-input number in steps of 2
+for (i in seq(start_odd, end_odd, by = 2)) {
+  cat(i, "\n")
+  total <- total + i
+}
+cat("Sum:", total, "\n")
+
+#7a
+# Taking user input for the range of odd numbers
+start_odd <- as.integer(readline("Enter a start odd number: "))
+end_odd <- as.integer(readline("Enter an end odd number: "))
+cat("Odd numbers from", end_odd, "to", start_odd, "are the following:\n")
+total <- 0
+# Using a for loop to print numbers from 1 to the user-input number in steps of 2
+for (i in seq(end_odd, start_odd, by = -2)) {
+  cat(i, "\n")
+  total <- total + i
+}
+cat("Sum:", total, "\n")
+
+#8 
+# Taking user input for the range of even numbers
+start_even <- as.integer(readline("Enter an even number: "))
+end_even <- as.integer(readline("Enter an even number: "))
+cat("Even numbers from", start_even, "to", end_even, "are the following:\n")
+total <- 0
+# Using a for loop to print numbers from 1 to the user-input number in steps of 2
+for (i in seq(start_even, end_even, by = 2)) {
+  cat(i, "\n")
+  total <- total + i
+}
+cat("Sum:", total, "\n")
+
+#8 a
+# Taking user input for the range of odd numbers
+start_even <- as.integer(readline("Enter a start even number: "))
+end_even <- as.integer(readline("Enter an end even number: "))
+cat("Even numbers from", end_even, "to", start_even, "are the following:\n")
+total <- 0
+# Using a for loop to print numbers from 1 to the user-input number in steps of 2
+for (i in seq(end_even, start_even, by = -2)) {
+  cat(i, "\n")
+  total <- total + i
+}
+cat("Sum:", total, "\n")
+
+#9
+# mulitples of a number and sum
+num <- as.integer(readline("Enter a number: "))
+range_limit <- as.integer(readline("Enter the range limit: "))
+cat("Multiples of", num, "up to", range_limit, "are:\n")
+sum <- 0
+for (i in seq(1, range_limit, by = 1)) {
+  if (i %% num == 0) {
+    cat(i, "\n")
+    sum <- sum + i
+  }
+}
+cat("The sum of multiples of ",num,"from ", num,"up to",range_limit, "is ", sum, "\n")
+
+#9a
+# mulitples of a number and sum
+num <- as.integer(readline("Enter a number: "))
+range_limit <- as.integer(readline("Enter the range limit: "))
+cat("Multiples of", num, "up to", range_limit, "are:\n")
+sum <- 0
+for (i in seq(range_limit, 1, by = -1)) {
+  if (i %% num == 0) {
+    cat(i, "\n")
+    sum <- sum + i
+  }
+}
+cat("The sum of multiples of ",num,"from ", range_limit,"down to",num, "is ", sum, "\n")
+
+#10 prime numbers in range
+start <- as.integer(readline("Enter the start of the range: "))
+end <- as.integer(readline("Enter the end of the range: "))
+prime_sum <- 0
+cat("Prime numbers between", start, "and", end, "are:\n")
+# start the loop
+for (num in seq(start, end)) { # this is outer loop
+  if (num > 1) { 
+    is_prime <- TRUE
+    for (i in seq(2, floor(sqrt(num)))) { # sqrt(num) 2 down to 1
+      if (num %% i == 0) {
+        is_prime <- FALSE
+        break
+      }
+    }
+    if (is_prime || num == 2 || num == 3) {  # Include 2 and 3 as a prime number
+      cat(num, "\n")
+      prime_sum <- prime_sum + num
+    }
+  }
+}
+cat("Sum of prime numbers:", prime_sum, "\n")
+
+#10a reverse 10
+start <- as.integer(readline("Enter the start of the range: "))
+end <- as.integer(readline("Enter the end of the range: "))
+prime_sum <- 0
+cat("Prime numbers between", start, "and", end, "in reverse order are:\n")
+# start for loop
+for (num in seq(end, start, by = -1)) {
+  if (num > 1) {
+    is_prime <- TRUE
+    for (i in seq(2, floor(sqrt(num)))) {
+      if (num %% i == 0) {
+        is_prime <- FALSE
+        break
+      }
+    }
+    if (is_prime || num == 2 || num == 3) { # includes 2 and 3 as prime num
+      cat(num, "\n")
+      prime_sum <- prime_sum + num
+    }
+  }
+}
+cat("Sum of prime numbers:", prime_sum, "\n")
+
+#11 factorial
+number <- as.integer(readline("Enter a number to calculate its factorial: "))
+factorial <- 1
+# start of for loop
+for (i in seq(1, number)) {
+  factorial <- factorial * i
+}
+cat("Factorial of", number, "is", factorial, "\n")
+
+# 12
+terms <- as.integer(readline("Enter the number of terms for Fibonacci sequence: "))
+a <- 0 # set 0 and 1 as first number
+b <- 1
+sum_fibonacci <- 0
+# start print 
+cat("Fibonacci sequence:\n")
+for (i in seq(terms)) { # goes up to term
+  cat(a, ", ")
+  sum_fibonacci <- sum_fibonacci + a
+  c <- a + b
+  a <- b
+  b <- c
+}
+cat("\nSum of Fibonacci sequence:", sum_fibonacci, "\n")
+
+#12 a reverse term
+terms <- as.integer(readline("Enter the number of terms for Fibonacci sequence: "))
+# fibonnaci vectors
+fibonacci <- numeric(terms)
+fibonacci[1] <- 0
+fibonacci[2] <- 1
+# print statement
+cat("Fibonacci sequence in reverse order:\n")
+for (i in seq(3, terms)) {
+  fibonacci[i] <- fibonacci[i - 1] + fibonacci[i - 2]
+}
+sum_fibonacci <- sum(fibonacci)
+for (i in rev(seq(terms))) {
+  cat(fibonacci[i], ", ")
+}
+cat("\nSum of Fibonacci sequence:", sum_fibonacci, "\n")
+
+#13
+# Enter a number for its multiplication table
+num <- as.integer(readline("Enter a number for its multiplication table: "))
+cat("Multiplication table of", num, ":\n")
+# start loop
+for (i in 1:20) {
+  result <- num * i
+  cat(num, "x", i, "=", result, "\n")
+}
+
+#13 reverse
+# Enter a number for its multiplication table
+num <- as.integer(readline("Enter a number for its multiplication table: "))
+cat("Multiplication table of", num, ":\n")
+# starrt loop
+for (i in 20:1) {
+  result <- num * i
+  cat(num, "x", i, "=", result, "\n")
+}
+
+
+
+# next problem
+
+# 39 Hip Hip Hooray
+first_word <- readline("Enter a first word: ")
+second_word <- readline("Enter a second word: ")
+first_num <- as.integer(readline("Enter the number of times the first word is used: "))
+second_num <- as.integer(readline("Enter the number of times the second word is used: "))
+total_num <- as.integer(readline("Enter the number of times the phrase is spoken: "))
+
+for (i in 1:total_num) {
+  for (j in 1:first_num) {
+    cat(first_word, "\n")
+  }
+  for (k in 1:second_num) {
+    cat(second_word, "!\n")
+  }
+}
+
+#40 Hip Hip Hooray
+first_word <- readline("Enter a first word: ")
+second_word <- readline("Enter a second word: ")
+first_num <- as.integer(readline("Enter the number of times the first word is used: "))
+total_num <- as.integer(readline("Enter the number of times the phrase is spoken: "))
+
+for (i in 1:total_num) {
+  for (j in 1:first_num) {
+    cat(first_word, "\n")
+  }
+  cat(second_word, "!\n")
+  
+}
+
+# next problem
+
+### remove all memory from R console
+rm(list = ls())
+ls()
+list.files()
+dir()
