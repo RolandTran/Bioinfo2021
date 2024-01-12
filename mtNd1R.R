@@ -34,7 +34,9 @@ mtNd1_f
 # run this at end of every problem
 list.files() # list all files
 ls() # list all variables in R file created
-
+head(mtNd1_f)
+tail(mtNd1_f)
+str(mtNd1_f)
 
 # 6a How many fasta sequences are in the file?
 # Join the elements of mtNd1_f into a single string
@@ -71,12 +73,12 @@ cat("There are ", count_mtNd1_f, "counts or frequencies of specific entry or ele
 # 9b How many A’s are there in this sequence (2nd statement)?
 mtNd1_f[2]
 table(strsplit(mtNd1_f[2], "")) # split each
-table(strsplit(mtNd1[2], "")[[1]])
+table(strsplit(mtNd1_f[2], "")[[1]])
 # create variable for 2nd line
 count_A_mtNd1_f_2 <- table(strsplit(mtNd1_f[2], ""))['A']
 count_A_mtNd1_f_2
 # alternative
-count_A_mtNd1_f_2a <- table(strsplit(mtNd1[2], "")[[1]])['A']
+count_A_mtNd1_f_2a <- table(strsplit(mtNd1_f[2], "")[[1]])['A']
 count_A_mtNd1_f_2a
 # print out statements
 cat("There are ",count_A_mtNd1_f_2, "A from the 2nd line of the fasta file." )
@@ -94,8 +96,8 @@ strsplit(mtNd1_f[1],"")[[1]] # first line into characters
 table(strsplit(mtNd1_f[15], "")[[1]]) # create table for A, C, G, T
 # focus in on line 2
 mtNd1_f[2]
-strsplit(mtNd1[2], "")[[1]] # into individual characters
-table(strsplit(mtNd1[2], "")[[1]]) # put into table
+strsplit(mtNd1_f[2], "")[[1]] # into individual characters
+table(strsplit(mtNd1_f[2], "")[[1]]) # put into table
 
 # 10 check first letter
 strsplit(mtNd1_f[1],"")[[1]][[1]] # prints first character
@@ -110,13 +112,13 @@ first_letter_3rd_line_mtNd1_f
 #11 print first letter from each line
 # from lecture, 
 for(x in 1:length(mtNd1_f)){
-  first_letter_mtNd1_f <- strsplit(mtNd1[x], "")[[1]][1]
+  first_letter_mtNd1_f <- strsplit(mtNd1_f[x], "")[[1]][1]
   cat(x, "",first_letter_mtNd1_f,"\n")
 }
 
 # there will be an error due to NA
 for(x in 1:length(mtNd1_f)){
-  first_letter_mtNd1_f <- strsplit(mtNd1[x], "")[[1]][1]
+  first_letter_mtNd1_f <- strsplit(mtNd1_f[x], "")[[1]][1]
   if(first_letter_mtNd1_f == ">"){
     cat("IDENTIFIER !!!!\n")
   }else{
@@ -128,7 +130,7 @@ for(x in 1:length(mtNd1_f)){
 # check if NA
 # there will be an error due to NA
 for(x in 1:length(mtNd1_f)){
-  first_letter_mtNd1_f <- strsplit(mtNd1[x], "")[[1]][1]
+  first_letter_mtNd1_f <- strsplit(mtNd1_f[x], "")[[1]][1]
   if(is.na(first_letter_mtNd1_f)){
     cat("EMPTY !!!!\n")
   }else{
@@ -142,7 +144,7 @@ for(x in 1:length(mtNd1_f)){
 
 #13
 for(x in 1:length(mtNd1_f)){
-  first_letter_mtNd1_f <- strsplit(mtNd1[x], "")[[1]][1]
+  first_letter_mtNd1_f <- strsplit(mtNd1_f[x], "")[[1]][1]
   if(is.na(first_letter_mtNd1_f)){
     cat("EMPTY !!!!\n")
   }else{
