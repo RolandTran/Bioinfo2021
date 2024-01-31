@@ -1,0 +1,25 @@
+Hello, this is some text. You can add more lines if needed.
+
+ Additional note goes here.
+
+ 1b) Ans 1b: We cross with a homozygous recessive animal to determine if an organism exhibiting a dominant trait is homozygous or heterozygous for a specific allele.
+
+ 2b ans: 8 different gametes can be produced by the parent AaBbCc: ABC, ABc, AbC. Abc, aBC, aBc, abC, abc. 
+
+ Phenotype database 1a) ans: As of 2024.01.22, there are 26717 protein coding genes in a mouse. https://www.mousephenotype.org/data/search?term=&type=gene.
+
+ 1b) ans: As of 2024.01.22, 8707 total knockout genes have been phenotyped. https://www.mousephenotype.org/ 
+
+ 1c) ans: AS of 2024.01.22, 34 genes are associated with respiratory diseases classifed as abnormal respiratory function which is defined as an anomaly in any measure of the process involved in respiration. https://www.mousephenotype.org/data/phenotypes/MP:0002327 
+
+ 1d) ans: ALG13 knockout leads to an increased total body fat amount. https://www.mousephenotype.org/data/genes/MGI:1914824 
+
+ 2a) ans: As of 2024.01.22, 14 homozygous knockout mice (7 male, 7 female) are phenotyped for each gene https://www.mousephenotype.org/understand/start-using-the-impc/ 
+
+ 2b) The university of employment has to be a member of the consortium and one has to follow a list of guidelines. Much information is cryptic.
+
+  3a) ans: The gene/locus for green colorblindess in humans is OPN1MW, deutan colorblindess. https://www.omim.org/entry/303800?search=%22color%20blindness%22&highlight=%22%28colour%7Ccolor%29%20blindness%22 
+
+  3b) ans: As of 2024.01.22, OPN1MW embryonic stem cells for this gene has been produced but phenotyping is currently not planned for a knockout strain of this gene. https://www.mousephenotype.org/data/search?term=opn1mw&type=gene
+  
+  
