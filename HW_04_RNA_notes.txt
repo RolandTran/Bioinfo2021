@@ -1,0 +1,130 @@
+Hello, this is some text. You can add more lines if needed.
+
+ Additional note goes here.
+ 
+1) Differential Gene Expression Analysis:
+Identify genes that are differentially expressed between different experimental conditions (e.g., diseased vs. healthy, treated vs. untreated).
+Statistical methods, such as t-tests or fold-change analysis, are commonly used to assess differential expression.
+Example: Comparing gene expression in cancerous vs. normal tissue to identify genes that are upregulated or downregulated in cancer.
+
+2) Clustering Analysis:
+Cluster genes or samples based on their expression patterns. This can help identify groups of genes that are co-regulated or samples with similar expression profiles.
+Hierarchical clustering and k-means clustering are common techniques for this analysis.
+Example: Hierarchical clustering of gene expression profiles across multiple tissue samples to identify groups of co-regulated genes.
+
+
+3) Pathway Analysis:
+Determine which biological pathways are significantly affected by changes in gene expression.
+Tools like Gene Set Enrichment Analysis (GSEA) or overrepresentation analysis can be used to identify enriched pathways.
+Example: Identifying pathways affected by gene expression changes in response to a drug treatment to understand its mechanism of action.
+
+
+4) Gene Ontology (GO) Analysis:
+Evaluate the functional enrichment of differentially expressed genes in terms of biological processes, cellular components, and molecular functions using GO terms.
+Example: Analyzing differentially expressed genes in a neurodegenerative disease to determine enrichment in GO terms related to neuron function and synaptic transmission.
+
+
+5) Network Analysis:
+Construct gene co-expression networks to identify relationships between genes based on their expression patterns.
+Network analysis tools help visualize and identify key nodes (genes) within the networks.
+Example: Constructing a co-expression network of genes implicated in a specific disease and identifying key hub genes that may play crucial roles.
+
+
+6) Time-Series Analysis:
+Analyze gene expression changes over time to understand temporal patterns and dynamics.
+Time-series clustering and trajectory analysis are common approaches.
+Example: Studying the gene expression changes during the cell cycle to identify genes with periodic patterns of expression.
+
+
+7) Survival Analysis:
+Assess the association between gene expression levels and patient survival outcomes.
+Kaplan-Meier survival curves and Cox proportional hazards models are often used for this analysis.
+Example: Analyzing the association between the expression of specific genes and the survival outcome of cancer patients to identify potential prognostic markers.
+
+
+8) Class Prediction/Classification:
+Build models to classify samples into predefined groups based on their gene expression profiles.
+Machine learning techniques, such as support vector machines or random forests, can be applied for classification.
+Example: Building a model to classify tumor samples into different subtypes based on their gene expression profiles for personalized treatment strategies.
+
+
+9) Normalization and Quality Control:
+Correct for technical variations and biases in microarray data using normalization methods.
+Perform quality control checks to identify and remove poor-quality samples.
+Example: Applying quantile normalization to correct for technical variations in microarray data and removing samples with poor quality based on quality control metrics.
+
+
+10) Integration with other omics data:
+Combine microarray data with other types of omics data (e.g., genomics, proteomics) to gain a more comprehensive understanding of biological processes.
+Example: Integrating microarray gene expression data with genomic mutation data to identify genes that are both differentially expressed and mutated in cancer.
+
+
+Using the boxplot function we can plot the matrix by column, every column will be used as input
+for a single boxplot. This allows us to compare the different samples. We need to set 2 additional
+parameters to the function, so that the labels end up being readable in the plot:
+
+boxplot(variable, las = 2, cex.axis = 0.7)
+
+
+Before we can start normalisation, we need to log2 transform the data using the following
+command:
+
+microarrayLOG <- apply(microarray, 2, log2)
+
+
+To normalize we are going to use an external package called preprocessCore, you can install
+packages into R by using the install.packages command, or using the menu: Packages / Pakete,
+Install packages / Installiere Paket(e). Select the preprocessCore package and install it into R.
+After installation we need to load the package (so that we can use the functions) by issueing the
+command:
+
+library(preprocessCore)
+ Normalize your data using the normalize.quantiles function, and store the results in a new
+variable called microarrayLOGQnorm. The new matrix created doesn’t have the rownames and
+column names from the original matrix, but we can add them using the following commands:
+
+colnames(microarrayLOGQnorm) <- colnames(microarrayLOG)
+rownames(microarrayLOGQnorm) <- rownames(microarrayLOG)
+
+After adding back the row and column names create another boxplot of the new variable microarrayLOGQnorm.
+
+
+Additional
+
+If we want to analyse the data we are perhaps interested in the groups that might be in the data.
+Since I downloaded this dataset without downloading the sample information, we don’t know if
+there are ay groups in the data. However we can find out these groups by doing clustering.
+
+The following code will first flip the rows and columns this function is called t() from translate.
+Then it will use the dist() function to create a distance matrix between samples. Finally we use
+hclust() function to cluster the distance matrix. NOTE all operations are applied to the variable,
+so when we want to reconstruct what happens we read from the inside out
+
+clusters <- hclust(dist(t(microarrayLOGQnorm)))
+plot(clusters)
+
+
+Because we don’t know the grouping of the samples we cannot look at differential expression
+(e.g. which genes are up in group1 versus down in group2). However we can see which genes
+are the most variable in the experiment, which might give us some biological insight into which
+genes are the most active. To calculate the most variable genes, we can use the var (variance)
+function. However because some genes are highly expressed, while others are low we need to
+compensate for that using the mean of the expression
+
+scaledVariation <- apply(microarrayLOGQnorm,1,function(x){
+    var(x)/mean(x)
+})
+
+When we plot this scaledVariation, we can see that there are some genes which are highly
+variable. When scaledVariance is higher then 1, this means that the variation is bigger then the
+mean, we can use the which function to select those genes, and use the names function to get
+their names:
+
+highlyVariable <- names(which(scaledVariation > 1))
+
+We can now make a heatmap using only these probes:
+
+heatmap(microarrayLOGQnorm[highlyVariable,], cexRow = 0.7, cexCol=0.7)
+
+
+
